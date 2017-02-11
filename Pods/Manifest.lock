@@ -1,0 +1,30 @@
+PODS:
+  - Alamofire (4.3.0)
+  - FlowingMenu (2.0.1)
+  - Kingfisher (3.2.4)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.3)
+  - FlowingMenu (~> 2.0.1)
+  - Kingfisher (~> 3.0)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: adf34cfb4c9f2ff4e3c420c6d9fb1e2eaf3b3791
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+SPEC CHECKSUMS:
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  FlowingMenu: 097789ea7fcec5c94edd58765e00e27b31e62cf5
+  Kingfisher: 8d80f39da403cd9c9ee11984e1655f4d6a566cdb
+  SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
+
+PODFILE CHECKSUM: 6d1a16851e4dcfef35ad1e45320647768fc1d621
+
+COCOAPODS: 1.2.0.rc.1
