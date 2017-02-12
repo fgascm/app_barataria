@@ -40,7 +40,7 @@ class FGMOfertasTableViewController: UITableViewController {
         // Add the delegate to respond to interactive transition events
         flowingMenuTransitionManager.delegate = self
         
-        refresh.backgroundColor = UIColor(red: 1.0, green: 0.50, blue: 0, alpha: 1.0)
+        refresh.backgroundColor = UIColor(red: 0.5, green: 1.0, blue: 0.5, alpha: 1.0)
         refresh.attributedTitle = NSAttributedString(string: "Arrastra para recargar")
         refresh.addTarget(self, action: #selector(FGMOfertasTableViewController.refreshMethod), for: .valueChanged)
         tableView.addSubview(refresh)

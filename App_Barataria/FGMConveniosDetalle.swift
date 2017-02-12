@@ -22,7 +22,15 @@ class FGMConveniosDetalle: UIViewController {
     @IBOutlet weak var myDescripcionLBL: UILabel!
     @IBOutlet weak var myImagenLogo: UIImageView!
     @IBOutlet weak var btnDetalles: UIButton!
+    @IBOutlet weak var myNumeroBTN: UIButton!
 
+    
+    //MARK: - IBActions
+    
+    @IBAction func btnLlamar(_ sender: Any) {
+        phone(phoneNum: String(modeloConveniosData!.Contacto!))
+    }
+    
     
     
     
@@ -42,7 +50,15 @@ class FGMConveniosDetalle: UIViewController {
     }
 
     
-    
+    func phone(phoneNum: String) {
+        if let url = URL(string: "tel://\(phoneNum)") {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url as URL)
+            }
+        }
+    }
     
 
     //MARK: - Vida VC
@@ -52,21 +68,17 @@ class FGMConveniosDetalle: UIViewController {
         
         
         myEmpresaLBL.text = modeloConveniosData?.Nombre
-        myContactoLBL.text = String(modeloConveniosData!.Contacto!)
+        myContactoLBL.text = "Teléfono:"
         myWebLBL.text = modeloConveniosData?.Web
         myDescripcionLBL.text = modeloConveniosData?.Descripcion
+        myNumeroBTN.setTitle(String(modeloConveniosData!.Contacto!), for: .normal)
 
         let url = URL(string: (modeloConveniosData?.Imagen!)!)
         myImagenLogo.kf.setImage(with: url)
         
         btnDetalles.layer.cornerRadius = btnDetalles.frame.width / 8
                myImagenLogo.clipsToBounds = true
-        
-        
-
-        
-        
-        
+    
 
     }
 

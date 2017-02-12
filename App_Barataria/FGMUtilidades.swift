@@ -21,10 +21,6 @@ public func showAlertVC(_ titleData:String,messageData:String) -> UIAlertControl
     
     let alertVC = UIAlertController(title: titleData, message: messageData, preferredStyle: .alert)
     alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    let when = DispatchTime.now() + 5
-    DispatchQueue.main.asyncAfter(deadline: when){
-    alertVC.dismiss(animated: true, completion: nil)
-    }
     return alertVC
 }
 

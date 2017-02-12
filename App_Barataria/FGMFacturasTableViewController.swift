@@ -112,7 +112,7 @@ class FGMFacturasTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detalleFacturasVC = self.storyboard?.instantiateViewController(withIdentifier: "verFactura") as! FGMFacturasDetalleViewController
         let model = arrayFacturas[indexPath.row]
-        let factura = (model.Fichero)! + "0" + stringQr! + ".pdf"
+        let factura = ((model.Fichero)! + "0" + stringQr! + ".pdf") as String
         detalleFacturasVC.myUrl = factura
         navigationController?.pushViewController(detalleFacturasVC, animated: true)
     }

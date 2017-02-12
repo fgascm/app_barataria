@@ -65,7 +65,8 @@ class FGMInicioViewController: UIViewController {
         mailcomposeViewController.mailComposeDelegate = self
         if MFMailComposeViewController.canSendMail(){
             present(mailcomposeViewController, animated: true, completion: nil)
-        }else{
+        }
+        else{
             showAlertVC("ATENCIÓN", messageData: "El mail no se ha logrado enviar correctamente")
         }
 

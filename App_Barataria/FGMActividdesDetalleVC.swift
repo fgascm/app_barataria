@@ -54,7 +54,6 @@ class FGMActividdesDetalleVC: UIViewController {
         if (EKEventStore.authorizationStatus(for: .event) != EKAuthorizationStatus.authorized) {
             eventStore.requestAccess(to: .event, completion: {
                 granted, error in
-                
                 self.createEvent(eventStore, title: (self.modeloActividadesData?.Nombre)!, startDate: startDate as Date, endDate: endDate as Date)
                 
             })
@@ -62,7 +61,7 @@ class FGMActividdesDetalleVC: UIViewController {
             createEvent(eventStore, title: (self.modeloActividadesData?.Nombre)!, startDate: startDate as Date, endDate: endDate as Date)
         }
         
-
+        
     }
     
     
@@ -119,9 +118,11 @@ class FGMActividdesDetalleVC: UIViewController {
         do {
             try eventStore.save(event, span: .thisEvent)
             savedEventId = event.eventIdentifier
+            self.present(showAlertVC("Atención", messageData: "Actividad añadida al calendario"), animated: true, completion: nil)
         } catch {
             print("Bad things happened")
         }
+        
     }
     
     // Removes an event from the EKEventStore. The method assumes the eventStore is created and
@@ -157,9 +158,9 @@ class FGMActividdesDetalleVC: UIViewController {
         myLugarLBL.text = modeloActividadesData?.Lugar
         //myFechaLBL.text = modeloActividadesData?.Inicio
         myPlazasLBL.text = String(modeloActividadesData!.Plazas!)
-        myFechaFinLBL.text = modeloActividadesData?.Fin
-        myPrecioLBL.text = String(modeloActividadesData!.Precio!)
-        myPrecioNo.text = String(modeloActividadesData!.PrcioNo!)
+        //myFechaFinLBL.text = modeloActividadesData?.Fin
+        myPrecioLBL.text = (String(modeloActividadesData!.Precio!) + "€") as String
+        myPrecioNo.text = (String(modeloActividadesData!.PrcioNo!) + "€") as String
         myPlazasLBL.text = modeloActividadesData?.Plazas
         myTipoLBL.text = modeloActividadesData?.Tipo
         let url = URL(string: (modeloActividadesData?.Imagen!)!)
@@ -205,6 +206,24 @@ class FGMActividdesDetalleVC: UIViewController {
         fechaFin = (dia! + "" + mes! + "" + anio!) as String
 
         
+        
+        let limite = modeloActividadesData?.FecLimite
+        
+        startIndex = limite?.index((limite?.startIndex)!, offsetBy: 8)
+        endIndex = limite?.index((fin?.startIndex)!, offsetBy: 9)
+        dia = limite?[startIndex!...endIndex!]
+        
+        startIndex = limite?.index((limite?.startIndex)!, offsetBy: 5)
+        endIndex = limite?.index((limite?.startIndex)!, offsetBy: 6)
+        mes = limite?[startIndex!...endIndex!]
+        
+        startIndex = limite?.index((limite?.startIndex)!, offsetBy: 0)
+        endIndex = limite?.index((limite?.startIndex)!, offsetBy: 3)
+        anio = limite?[startIndex!...endIndex!]
+
+        
+        
+        myFechaFinLBL.text = (dia! + "-" + mes! + "-" + anio!) as String
         
         
         
