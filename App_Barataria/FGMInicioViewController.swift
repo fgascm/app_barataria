@@ -67,7 +67,7 @@ class FGMInicioViewController: UIViewController {
             present(mailcomposeViewController, animated: true, completion: nil)
         }
         else{
-            showAlertVC("ATENCIÓN", messageData: "El mail no se ha logrado enviar correctamente")
+            self.present(showAlertVC("ATENCIÓN", messageData: "El mail no se ha logrado enviar correctamente"), animated: true, completion: nil)
         }
 
     }
